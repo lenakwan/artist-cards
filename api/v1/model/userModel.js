@@ -7,7 +7,7 @@ const db = require('../db');
  */
 searchUser = (username) => {
     return db.pool.query({
-        text: "Select * from items where username = $1",
+        text: "Select * from users where username = $1",
         values: [username]
     });
 }
