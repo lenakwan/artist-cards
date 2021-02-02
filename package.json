@@ -1,0 +1,15 @@
+{
+  "name": "artist-cards",
+  "version": "1.0.0",
+  "description": "server for handling requests to database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lena Kwan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.5.1"
+  }
+}

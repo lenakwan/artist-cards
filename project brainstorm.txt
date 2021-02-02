@@ -1,0 +1,102 @@
+some quick ideas jotted down for what I need for the application and what I can do with the database.
+
+please note that the sql will be postgresql commands and will not work for mysql!!!
+
+
+Project Idea:
+Website to replace business cards for artists and so they don't have to pay for hosting!
+
+Considerations:
+1. Customization for cards (because artists will like that!)
+2. Show Commission Status
+3. Link to other things such as trello/instagram
+4. Show Prices!
+5. Ease of use!
+
+Ideas:
+link user profiles based on subdomains? exampe: username.domain.com ?
+link user profiles based on domain.com/username ?
+
+Checklist:
+-create database
+-create node.js server
+-host node.js server on heroku
+-create frontend that consumes api [bootstrap/html/css]
+-after creating initial front end, rewrite as react application
+
+Users
+-username <-unique varchar
+-id <- PRIMARY incremental num
+-password varchar
+
+Usersettings
+-id <-fk Users id <- PRIMARY
+-name <-varchar
+-status <-boolean
+-bg_img <- boolean
+-bg_link <-varchar
+-bg_color <- varchar
+-header_bg_img <- boolean
+-header_bg_color <- varchar
+-profile_img <- varchar
+-content_bg <-varchar
+-pricing <- boolean
+
+Pricing 
+- user_id <- fk_user_id PRIMARY 
+- item_name <- varchar 
+- item_price <- numeric
+
+Links
+-user_id <- fk_user_id PRIMARY
+-link_name <-varchar
+-link_url <-varchar
+
+CREATE TABLE users(
+    email VARCHAR(40) NOT NULL,
+    password VARCHAR(40) NOT NULL,
+    id SERIAL PRIMARY KEY
+);
+
+CREATE TABLE user_settings (
+    id INT,
+    name VARCHAR(40) NOT NULL,
+    status BOOLEAN NOT NULL, 
+    bg_img BOOLEAN NOT NULL,
+    bg_link VARCHAR(255) NOT NULL,
+    bg_color VARCHAR(10) NOT NULL,
+    header_bg_img BOOLEAN NOT NULL,
+    header_bg_link VARCHAR(255) NOT NULL,
+    header_bg_color VARCHAR(10) NOT NULL,
+    profile_img TEXT NOT NULL,
+    content_color VARCHAR(10) NOT NULL,
+    pricing BOOLEAN NOT NULL,
+    PRIMARY KEY(id),
+    CONSTRAINT id
+        FOREIGN KEY(id)
+            REFERENCES users(id)
+);
+
+CREATE TABLE pricing(
+    id INT,
+    item_name VARCHAR(40) NOT NULL,
+    item_price NUMERIC NOT NULL,
+    PRIMARY KEY(id),
+    CONSTRAINT id
+        FOREIGN KEY(id)
+            REFERENCES users(id)
+);
+
+CREATE TABLE links(
+    id INT,
+    link_name VARCHAR(40) NOT NULL,
+    link_url VARCHAR(255) NOT NULL,
+     PRIMARY KEY(id),
+    CONSTRAINT id
+        FOREIGN KEY(id)
+            REFERENCES users(id)
+); 
+
+initial user:
+INSERT INTO users (email, password, id) VALUES ('test@test.com', 'test123', nextval('users_id_seq'));
+
