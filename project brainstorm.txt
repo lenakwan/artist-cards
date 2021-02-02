@@ -53,13 +53,14 @@ Links
 -link_url <-varchar
 
 CREATE TABLE users(
-    email VARCHAR(40) NOT NULL,
+    username VARCHAR(40) NOT NULL,
     password VARCHAR(40) NOT NULL,
     id SERIAL PRIMARY KEY
 );
 
 CREATE TABLE user_settings (
     id INT,
+    category VARCHAR(20),
     name VARCHAR(40) NOT NULL,
     status BOOLEAN NOT NULL, 
     bg_img BOOLEAN NOT NULL,
@@ -97,6 +98,19 @@ CREATE TABLE links(
             REFERENCES users(id)
 ); 
 
+
 initial user:
-INSERT INTO users (email, password, id) VALUES ('test@test.com', 'test123', nextval('users_id_seq'));
+INSERT INTO users (username, password, id) VALUES ('test', 'test123', nextval('users_id_seq'));
+
+
+----------Future Considerations-------------
+for future use if users can belong to multiple categories?
+CREATE TABLE categories(
+    id INT,
+    category_name VARCHAR(20),
+    CONSTRAINT id
+        FOREIGN KEY(id)
+            REFERENCES users(id)
+);
+
 
