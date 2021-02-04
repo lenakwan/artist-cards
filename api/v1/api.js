@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 let cors = require('cors');
 let userController = require('./controller/userController');
-
+let settingsController = require('./controller/settingsController');
 const api = express.Router();
 
 api.use(bodyParser.urlencoded({
@@ -25,5 +25,7 @@ api.get('/', (req, res) => res
 api.post('/login', userController.loginUser);
 
 api.post('/register', userController.registerUser);
+
+api.post('/userSettings', settingsController.createSetting);
 
 module.exports = api;

@@ -27,15 +27,15 @@ changeDisplayName = (id, name) => {
 }
 
 /**
- * Updates the store status of the user.
+ * Updates the store user_status of the user.
  * 
  * @param {integer} id an user id
- * @param {boolean} status true/false indicates if the user's commissions are open
+ * @param {boolean} user_status true/false indicates if the user's commissions are open
  */
-changeStoreStatus = (id, status) => {
+changeStoreuser_status = (id, user_status) => {
     return db.pool.query({
-        text: "UPDATE user_settings SET status = $2 WHERE id = $1",
-        values: [id, status]
+        text: "UPDATE user_settings SET user_status = $2 WHERE id = $1",
+        values: [id, user_status]
     })
 }
 
@@ -43,14 +43,14 @@ changeStoreStatus = (id, status) => {
  * Updates the background image and color of the user's page stored in the database.
  * 
  * @param {integer} id an user id
- * @param {boolean} status true or false indicating if it is using an image
+ * @param {boolean} user_status true or false indicating if user is using an image
  * @param {string} link url to website hosting image
  * @param {string} color hexadecimal color
  */
-changeBackground = (id, status, link, color) => {
+changeBackground = (id, user_status, link, color) => {
     return db.pool.query({
         text: "UPDATE user_settings SET bg_img = $2, bg_link = $3, bg_color=$4 WHERE id = $1",
-        values: [id, status, link, color]
+        values: [id, user_status, link, color]
     })
 }
 
@@ -58,14 +58,14 @@ changeBackground = (id, status, link, color) => {
  * Updates the header image and color of the user's page stored in the database.
  * 
  * @param {integer} id an user id
- * @param {boolean} status true or false indicating if it is using an image
+ * @param {boolean} user_status true or false indicating the user is using an image
  * @param {string} link url to website hosting image
  * @param {string} color hexadecimal color
  */
-changeHeader = (id, status, link, color) => {
+changeHeader = (id, user_status, link, color) => {
     return db.pool.query({
         text: "UPDATE user_settings SET header_bg_img = $2, header_bg_link = $3, header_bg_color=$4 WHERE id = $1",
-        values: [id, status, link, color]
+        values: [id, user_status, link, color]
     })
 }
 
@@ -99,22 +99,29 @@ changeContentColor = (id, color) => {
  * Updates the database with whether the user's pricing should be displayed or not.
  * 
  * @param {integer} id an user id
- * @param {boolean} status true or false for displaying pricing on their page
+ * @param {boolean} user_status true or false for displaying pricing on their page
  */
-togglePricing = (id, status) => {
+togglePricing = (id, user_status) => {
     return db.pool.query({
         text: "UPDATE user_settings SET pricing= $2 WHERE id = $1",
-        values: [id, status]
+        values: [id, user_status]
     })
 }
 
-createSetting = (id, category, name, status, bg_img, bg_link, bg_color, header_bg_img, header_bg_link, header_bg_color, profile_img, content_color, pricing) => {
+createSetting = (id, category, name, user_status, bg_img, bg_link, bg_color, header_bg_img, header_bg_link, header_bg_color, profile_img, content_color, pricing) => {
     return db.pool.query({
-        text: "INSERT INTO user_settings (id, category, name, status, bg_img, bg_link, bg_color, header_bg_img, header_bg_link, header_bg_color, profile_img, content_color, pricing) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)",
-        values: [id, category, name, status, bg_img, bg_link, bg_color, header_bg_img, header_bg_link, header_bg_color, profile_img, content_color, pricing]
+        text: "INSERT INTO user_settings (id, category, name, user_status, bg_img, bg_link, bg_color, header_bg_img, header_bg_link, header_bg_color, profile_img, content_color, pricing) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)",
+        values: [id, category, name, user_status, bg_img, bg_link, bg_color, header_bg_img, header_bg_link, header_bg_color, profile_img, content_color, pricing]
+    });
+}
+
+retrieveSettings = (id) =>{
+    return db.pool.query({
+        text: "SELECT * FROM user_settings WHERE id = $1",
+        values: [id]
     });
 }
 
 module.exports = {
-    createSetting, togglePricing, changeContentColor, changeProfile, changeHeader, changeBackground, changeStoreStatus, changeDisplayName, changeCategory
+    createSetting, togglePricing, changeContentColor, changeProfile, changeHeader, changeBackground, changeStoreuser_status, changeDisplayName, changeCategory
 }
