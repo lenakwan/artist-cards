@@ -34,7 +34,7 @@ changeDisplayName = (id, name) => {
  */
 changeStoreuser_status = (id, user_status) => {
     return db.pool.query({
-        text: "UPDATE user_settings SET user_status = $2 WHERE id = $1",
+        text: "UPDATE user_settings SET status = $2 WHERE id = $1",
         values: [id, user_status]
     })
 }
@@ -110,7 +110,7 @@ togglePricing = (id, user_status) => {
 
 createSetting = (id, category, name, user_status, bg_img, bg_link, bg_color, header_bg_img, header_bg_link, header_bg_color, profile_img, content_color, pricing) => {
     return db.pool.query({
-        text: "INSERT INTO user_settings (id, category, name, user_status, bg_img, bg_link, bg_color, header_bg_img, header_bg_link, header_bg_color, profile_img, content_color, pricing) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)",
+        text: "INSERT INTO user_settings (id, category, name, status, bg_img, bg_link, bg_color, header_bg_img, header_bg_link, header_bg_color, profile_img, content_color, pricing) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)",
         values: [id, category, name, user_status, bg_img, bg_link, bg_color, header_bg_img, header_bg_link, header_bg_color, profile_img, content_color, pricing]
     });
 }
