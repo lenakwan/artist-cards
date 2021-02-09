@@ -39,7 +39,7 @@ changeContentSettings = async (req, res) => {
     let user_id = req.params.id;
     let body = req.body;
     settingsModel.changeContentColor(user_id, body.content_color).then((data) => {
-        res.status(200).json('Content Color set to: ' + body.color)
+        res.status(200).json('Content Color set to: ' + body.content_color)
     }).catch(err => res.status(500).json({
         message: "Error 500 internal Server error: " + err.message
     }))

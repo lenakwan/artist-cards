@@ -36,13 +36,13 @@ api.put('/userPricing/:id', settingsController.changePricing);
 
 api.put('/userContent/:id', settingsController.changeContentSettings);
 
-api.put('/userProfile/id', settingsController.changeProfilePicture);
+api.put('/userProfile/:id', settingsController.changeProfilePicture);
 
 api.put('/userHeader/:id', settingsController.changeUserHeader);
 
 api.put('/userBackground/:id', settingsController.changeUserBackground);
 
-api.put('/userStatus/id', settingsController.changeCommissionStatus);
+api.put('/userStatus/:id', settingsController.changeCommissionStatus);
 
 api.put('/userName/:id', settingsController.changeUserName);
 
