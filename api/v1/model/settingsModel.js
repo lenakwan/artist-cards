@@ -123,5 +123,5 @@ retrieveSettings = (id) =>{
 }
 
 module.exports = {
-    createSetting, togglePricing, changeContentColor, changeProfile, changeHeader, changeBackground, changeStoreStatus, changeDisplayName, changeCategory
+    createSetting, togglePricing, changeContentColor, changeProfile, changeHeader, changeBackground, changeStoreStatus, changeDisplayName, changeCategory, retrieveSettings
 }
