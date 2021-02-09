@@ -35,6 +35,8 @@ deleteAllPrices = (id) =>{
     })
 }
 
+
+
 module.exports = {
     deleteAllPrices, deletePrice, editPrice, getPrices, addPrice
 }

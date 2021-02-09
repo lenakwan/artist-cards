@@ -14,3 +14,15 @@ deleteLink = (id, link_name)=>{
     })
 }
 
+getLinks = (id) =>{
+    return db.pool.query({
+        text: "SELECT * FROM links WHERE id = $1",
+        values: [id]
+    })
+}
+
+module.exports= {
+    addLink,
+    deleteLink,
+    getLinks
+}

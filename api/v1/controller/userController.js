@@ -2,7 +2,7 @@ const userModel = require('../model/userModel');
 
 /**
  * Registers a user on the application. Check if user exists in the database, 
- * if it does then it sends a message that the user exists. If not, a new user is created.
+ * if it does then it sends a message that the user exists. If not, a new user is created. Username is unique.
  * 
  */
 registerUser = async (req, res) => {

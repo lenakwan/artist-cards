@@ -32,7 +32,7 @@ changeDisplayName = (id, name) => {
  * @param {integer} id an user id
  * @param {boolean} user_status true/false indicates if the user's commissions are open
  */
-changeStoreuser_status = (id, user_status) => {
+changeStoreStatus = (id, user_status) => {
     return db.pool.query({
         text: "UPDATE user_settings SET status = $2 WHERE id = $1",
         values: [id, user_status]
@@ -123,5 +123,5 @@ retrieveSettings = (id) =>{
 }
 
 module.exports = {
-    createSetting, togglePricing, changeContentColor, changeProfile, changeHeader, changeBackground, changeStoreuser_status, changeDisplayName, changeCategory
+    createSetting, togglePricing, changeContentColor, changeProfile, changeHeader, changeBackground, changeStoreStatus, changeDisplayName, changeCategory
 }
