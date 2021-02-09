@@ -44,6 +44,6 @@ api.put('/userBackground/:id', settingsController.changeUserBackground);
 
 api.put('/userStatus/id', settingsController.changeCommissionStatus);
 
-api.put('/userName/:id'.settingsController.changeUserName);
+api.put('/userName/:id', settingsController.changeUserName);
 
 module.exports = api;

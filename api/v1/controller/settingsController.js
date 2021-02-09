@@ -1,6 +1,3 @@
-const {
-    settings
-} = require('cluster');
 const settingsModel = require('../model/settingsModel');
 
 
@@ -107,5 +104,5 @@ module.exports = {
     changeUserHeader,
     changeUserBackground,
     changeCommissionStatus,
-    changeUserName
+    changeUserName 
 }
