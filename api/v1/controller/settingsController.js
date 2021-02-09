@@ -29,7 +29,7 @@ changePricing = async (req, res) => {
     let user_id = req.params.id;
     let body = req.body;
     settingsModel.togglePricing(user_id, body.pricing).then((data) => {
-        res.status(200).json('Show Pricing for Page set to' + body.pricing);
+        res.status(200).json('Show Pricing for Page set to ' + body.pricing);
     }).catch(err => res.status(500).json({
         message: "Error 500 Internal Server Error: " + err.message
     }))
@@ -38,8 +38,8 @@ changePricing = async (req, res) => {
 changeContentSettings = async (req, res) => {
     let user_id = req.params.id;
     let body = req.body;
-    settingsModel.changeContentColor(user_id, body.color).then((data) => {
-        res.status(200).json('Content Color set to:' + body.color)
+    settingsModel.changeContentColor(user_id, body.content_color).then((data) => {
+        res.status(200).json('Content Color set to: ' + body.color)
     }).catch(err => res.status(500).json({
         message: "Error 500 internal Server error: " + err.message
     }))
@@ -104,5 +104,5 @@ module.exports = {
     changeUserHeader,
     changeUserBackground,
     changeCommissionStatus,
-    changeUserName 
+    changeUserName
 }
