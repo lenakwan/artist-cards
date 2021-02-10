@@ -7,7 +7,7 @@ let cors = require('cors');
 const userController = require('./controller/userController');
 const settingsController = require('./controller/settingsController');
 const linkController = require('./controller/linkController');
-const pricingController = require('./controller/linkController');
+const pricingController = require('./controller/pricingController');
 const api = express.Router();
 
 api.use(bodyParser.urlencoded({
@@ -45,5 +45,24 @@ api.put('/userBackground/:id', settingsController.changeUserBackground);
 api.put('/userStatus/:id', settingsController.changeCommissionStatus);
 
 api.put('/userName/:id', settingsController.changeUserName);
+
+api.post('/links', linkController.addUserLink);
+
+api.get('/links/:id', linkController.getUserLinks);
+
+api.delete('/links/:id', linkController.deleteUserLink);
+
+api.post('/pricing', pricingController.createPrice);
+
+api.get('/pricing/:id', pricingController.getUserPrices);
+
+api.delete('/pricing/:id', pricingController.deleteUserPrices);
+
+api.delete('/price/:id', pricingController.deleteSinglePrice);
+
+api.put('/price/:id'.pricingController.editSinglePrice);
+
+
+
 
 module.exports = api;

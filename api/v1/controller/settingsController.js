@@ -79,7 +79,7 @@ changeCommissionStatus = async (req, res) => {
     let user_id = req.params.id;
     let body = req.body;
     settingsModel.changeStoreStatus(user_id, body.status).then((data) => {
-        res.status(200).json('Commision status changed to ' + body.user_status)
+        res.status(200).json('Commision status changed to ' + body.status)
     }).catch(err => res.status(500).json({
         message: "Error 500 internal Server error: " + err.message
     }))

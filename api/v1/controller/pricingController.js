@@ -10,8 +10,9 @@ createPrice = async (req, res) => {
 }
 
 deleteSinglePrice = async (req, res) => {
+    let user_id = req.params.id;
     let body = req.body;
-    pricingModel.deletePrice(body.id, body.item_name).then((data) => {
+    pricingModel.deletePrice(user_id, body.item_name).then((data) => {
         res.status(200).json('Price Deleted')
     }).catch(err => res.status(500).json({
         message: "Internal Server Error: " + err.message
@@ -19,8 +20,8 @@ deleteSinglePrice = async (req, res) => {
 }
 
 deleteUserPrices = async (req, res) => {
-    let body = req.body;
-    pricingModel.deleteAllPrices(body.id).then((data) => {
+    let user_id = req.params.id;
+    pricingModel.deleteAllPrices(user_id).then((data) => {
         res.status(200).json('Price Deleted')
     }).catch(err => res.status(500).json({
         message: "Internal Server Error: " + err.message
@@ -40,12 +41,13 @@ getUserPrices = async (req, res) => {
 }
 
 editSinglePrice = async (req, res) => {
+    let user_id = req.params.id;
     let body = req.body;
-    pricingModel.editPrice(body.id, body.item_name, body.item_price).then((data) => {
+    pricingModel.editPrice(user_id, body.item_name, body.item_price).then((data) => {
         res.status(200).json(body.item_name + ' Edited')
     }).catch(err => res.status(500).json({
         message: "Internal Server Error: " + err.message
-    }))
+    }));
 }
 
 module.exports = {
