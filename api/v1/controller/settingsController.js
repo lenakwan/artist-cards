@@ -105,7 +105,7 @@ changeUserName = async (req, res) => {
 
 getCategoryUsers = async(req,res) =>{
     let category = req.params.category;
-    settingsModel.getUniqueCategories(category).then((data) => {
+    settingsModel.retrieveByCategory(category).then((data) => {
         res.status(200).json(data.rows);
     }).catch(err => res.status(500).json({
         message: "Error 500 Internal Server Error: " + err.message
