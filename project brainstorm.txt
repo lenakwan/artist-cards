@@ -88,7 +88,7 @@ CREATE TABLE pricing(
     id INT,
     item_name VARCHAR(40) NOT NULL,
     item_price NUMERIC NOT NULL,
-    PRIMARY KEY(id),
+    PRIMARY KEY(id, item_name),
     CONSTRAINT id
         FOREIGN KEY(id)
             REFERENCES users(id)
