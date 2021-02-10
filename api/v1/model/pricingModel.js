@@ -16,7 +16,7 @@ getPrices = (id) =>{
 
 editPrice = (id, itemName, newPrice) => {
     return db.pool.query({
-        text:"UPDATE pricing SET item_price = $3 WHERE id=$1, AND item_name = $2",
+        text:"UPDATE pricing SET item_price = $3 WHERE id=$1 AND item_name = $2",
         values: [id, itemName, newPrice]
     })
 }
