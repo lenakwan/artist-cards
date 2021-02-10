@@ -12,7 +12,7 @@ app.use(cors());
 // this lets me do versioning so i can make changes to v2 while leaving v1 up and running!
 app.use("/v1", apiVersion1);
 
-app.use(express.static(__dirname + "front-end/index.html"));
+app.use(express.static('front-end'));
 
 app.listen(port, (err) => {
     if(err){
