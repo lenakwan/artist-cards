@@ -2,7 +2,7 @@ const linkModel = require('../model/linkModel');
 
 addUserLink = async (req, res) => {
     let body = req.body;
-    linkModel.addLink(body.id, link_name, link_url).then((data) => {
+    linkModel.addLink(body.id, body.link_name, body.link_url).then((data) => {
         res.status(200).json('Link Added')
     }).catch(err => res.status(500).json({
         message: "Internal Server Error: " + err.message
@@ -12,7 +12,7 @@ addUserLink = async (req, res) => {
 deleteUserLink = async (req, res) => {
     let user_id = req.params.id;
     let body = req.body;
-    linkModel.deleteLink(user_id, link_name).then((data) => {
+    linkModel.deleteLink(user_id, body.link_name).then((data) => {
         res.status(200).json('Link Deleted')
     }).catch(err => res.status(500).json({
         message: "Internal Server Error: " + err.message

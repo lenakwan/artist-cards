@@ -63,6 +63,4 @@ api.delete('/price/:id', pricingController.deleteSinglePrice);
 api.put('/price/:id', pricingController.editSinglePrice);
 
 
-
-
 module.exports = api;
