@@ -60,7 +60,7 @@ api.delete('/pricing/:id', pricingController.deleteUserPrices);
 
 api.delete('/price/:id', pricingController.deleteSinglePrice);
 
-api.put('/price/:id'.pricingController.editSinglePrice);
+api.put('/price/:id', pricingController.editSinglePrice);
 
 
 
