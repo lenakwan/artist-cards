@@ -2,7 +2,7 @@
   "name": "artist-cards",
   "version": "1.0.0",
   "description": "server for handling requests to database",
-  "main": "index.js",
+  "main": "front-end/index.html",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
