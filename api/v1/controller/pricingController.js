@@ -2,8 +2,8 @@ const pricingModel = require('../model/pricingModel');
 
 createPrice = async (req, res) => {
     let body = req.body;
-    pricingModel.getPrices(body.id, body.item_name, body.item_price).then((data) => {
-        res.status(200).json('New Price added to Database')
+    pricingModel.addPrice(body.id, body.item_name, body.item_price).then((data) => {
+        res.status(200).json(data + ' added to Database')
     }).catch(err => res.status(500).json({
         message: "Internal Server Error: " + err.message
     }))
