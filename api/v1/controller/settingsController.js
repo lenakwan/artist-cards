@@ -12,6 +12,14 @@ createSetting = async (req, res) => {
     }));
 }
 
+getUniqueCategories = async (req, res) => {
+    settingsModel.retrieveUniqueCategories().then((data) => {
+        res.status(200).json(data.rows);
+    }).catch(err => res.status(500).json({
+        message: "Error 500 Internal Server Error: " + err.message
+    }));
+}
+
 getUserSettings = async (req, res) => {
     let user_id = req.params.id;
     if (!user_id) {
@@ -104,5 +112,6 @@ module.exports = {
     changeUserHeader,
     changeUserBackground,
     changeCommissionStatus,
-    changeUserName
+    changeUserName,
+    getUniqueCategories
 }

@@ -13,6 +13,17 @@ changeCategory = (id, category) => {
     })
 }
 
+
+/**
+ * Retrieves Unique Categories.
+ * 
+ */
+retrieveUniqueCategories = () => {
+    return db.pool.query({
+        text: "SELECT DISTINCT category FROM user_settings"
+    })
+}
+
 /**
  * Updates the user's display name. Does not affect the user's login.
  * 
@@ -115,7 +126,7 @@ createSetting = (id, category, name, user_status, bg_img, bg_link, bg_color, hea
     });
 }
 
-retrieveSettings = (id) =>{
+retrieveSettings = (id) => {
     return db.pool.query({
         text: "SELECT * FROM user_settings WHERE id = $1",
         values: [id]
@@ -123,5 +134,15 @@ retrieveSettings = (id) =>{
 }
 
 module.exports = {
-    createSetting, togglePricing, changeContentColor, changeProfile, changeHeader, changeBackground, changeStoreStatus, changeDisplayName, changeCategory, retrieveSettings
+    createSetting,
+    togglePricing,
+    changeContentColor,
+    changeProfile,
+    changeHeader,
+    changeBackground,
+    changeStoreStatus,
+    changeDisplayName,
+    changeCategory,
+    retrieveSettings,
+    retrieveUniqueCategories
 }
