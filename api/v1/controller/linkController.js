@@ -22,7 +22,7 @@ deleteUserLink = async (req, res) => {
 getUserLinks =async (req,res) =>{
     let user_id = req.params.id;
     linkModel.getLinks(user_id).then((data) => {
-        res.status(200).json('Links Retrieved')
+        res.status(200).json(data.rows)
     }).catch(err => res.status(500).json({
         message: "Internal Server Error: " + err.message
     }))

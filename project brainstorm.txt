@@ -98,7 +98,7 @@ CREATE TABLE links(
     id INT,
     link_name VARCHAR(40) NOT NULL,
     link_url VARCHAR(255) NOT NULL,
-     PRIMARY KEY(id),
+     PRIMARY KEY(id, link_name),
     CONSTRAINT id
         FOREIGN KEY(id)
             REFERENCES users(id)
