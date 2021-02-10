@@ -133,6 +133,13 @@ retrieveSettings = (id) => {
     });
 }
 
+retrieveByCategory = (category)=>{
+    return db.pool.query({
+        text: "SELECT id FROM user_settings WHERE category = $1",
+        values: [category]
+    });
+}
+
 module.exports = {
     createSetting,
     togglePricing,
@@ -144,5 +151,6 @@ module.exports = {
     changeDisplayName,
     changeCategory,
     retrieveSettings,
-    retrieveUniqueCategories
+    retrieveUniqueCategories,
+    retrieveByCategory
 }

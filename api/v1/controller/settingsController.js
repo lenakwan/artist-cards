@@ -103,6 +103,15 @@ changeUserName = async (req, res) => {
     }))
 }
 
+getCategoryUsers = async(req,res) =>{
+    let category = req.params.category;
+    settingsModel.getUniqueCategories(category).then((data) => {
+        res.status(200).json(data.rows);
+    }).catch(err => res.status(500).json({
+        message: "Error 500 Internal Server Error: " + err.message
+    }));
+}
+
 module.exports = {
     createSetting,
     getUserSettings,
@@ -113,5 +122,6 @@ module.exports = {
     changeUserBackground,
     changeCommissionStatus,
     changeUserName,
-    getUniqueCategories
+    getUniqueCategories,
+    getCategoryUsers
 }

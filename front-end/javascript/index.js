@@ -1,4 +1,4 @@
-let dropdown = $('#categories-dropdown');
+let dropdown = $('#category-dropdown');
 
 dropdown.empty();
 

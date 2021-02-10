@@ -44,6 +44,8 @@ api.put('/userBackground/:id', settingsController.changeUserBackground);
 
 api.get('/categories', settingsController.getUniqueCategories);
 
+api.get('/categories/:category', settingsController.getCategoryUsers);
+
 api.put('/userStatus/:id', settingsController.changeCommissionStatus);
 
 api.put('/userName/:id', settingsController.changeUserName);
