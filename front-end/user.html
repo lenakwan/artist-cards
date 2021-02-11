@@ -1,0 +1,71 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Card</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="stylesheets/user.css">
+
+</head>
+
+<body>
+    <div class="container fluid  center h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="jumbotron ">
+                <!-- Header content -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card text-center">
+                            <div class="card-header">
+                                <img class="btn-md" id="user-profile"
+                                    src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+                                    alt="profile picture">
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title text-center"><span>User Name</span></h2>
+                                <p class="card-text"><strong id="user-category">Web Developer
+                                    </strong> </p>
+                                <p class="card-text"><strong id="store-status">Commissions Currently:
+                                    </strong><span>Closed</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- User Links -->
+                <div class="row" id="user-links-toggle">
+                    <div class="col-12">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div id="user-links"></div>
+                                <p>This user currently does not have any links set.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- User Pricing -->
+                <div class="row" id="user-price-toggle">
+                    <div class="col-12">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div id="user-links"></div>
+                                <p>This user does not have their prices set</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="./javascript/user.js"></script>
+</body>
+
+</html>

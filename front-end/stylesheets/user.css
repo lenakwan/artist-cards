@@ -1,0 +1,14 @@
+#user-profile {
+    border-radius: 50%;
+    width: 300px;
+    overflow: hidden;
+    margin: 0;
+}
+
+#user-price-toggle{
+    visibility: hidden;
+}
+
+#user-links-toggle{
+    visibility:hidden;
+}

@@ -35,6 +35,17 @@ loginUser = async (req, res) => {
     }));
 }
 
+searchUser = async (req, res)=>{
+    let body = req.body;
+    userModel.searchUser(body.username, body.password).then((users) => {
+        if (users.rowCount == 1) {
+            res.status(200).json(users.rows);
+        } else {
+            res.status(409).json('User Not Found');
+        }
+    })
+}
+
 module.exports = {
-    registerUser, loginUser
+    registerUser, loginUser, searchUser
 }

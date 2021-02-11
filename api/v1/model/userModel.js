@@ -36,6 +36,7 @@ createUser = (username, password) =>{
     });
 }
 
+
 module.exports={
     searchUser, authenticateUser, createUser
 }
