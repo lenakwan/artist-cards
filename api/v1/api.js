@@ -26,7 +26,7 @@ api.get('/', (req, res) => res
 
 api.post('/login', userController.loginUser);
 
-api.get('/user', userController.searchUser);
+api.get('/user/:username', userController.searchUser);
 
 api.post('/register', userController.registerUser);
 
