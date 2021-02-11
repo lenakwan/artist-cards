@@ -49,5 +49,5 @@ searchUserId = (username) => {
 }
 
 module.exports={
-    searchUser, authenticateUser, createUser
+    searchUser, authenticateUser, createUser, searchUserId
 }
