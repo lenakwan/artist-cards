@@ -7,7 +7,7 @@ const userModel = require('../model/userModel');
  */
 registerUser = async (req, res) => {
     let body = req.body;
-    userModel.searchUser(body.username, body.password).then((users) => {
+    userModel.searchUser(body.username).then((users) => {
         if (users.rowCount == 0) {
             userModel.createUser(body.username, body.password).catch(err => res.status(500).json({
                 message: "Error 500 Internal Server Error: " + err.message
@@ -36,8 +36,8 @@ loginUser = async (req, res) => {
 }
 
 searchUser = async (req, res)=>{
-    let body = req.body;
-    userModel.searchUser(body.username, body.password).then((users) => {
+    let user_name = req.params.id;
+    userModel.searchUser(user_name).then((users) => {
         if (users.rowCount == 1) {
             res.status(200).json(users.rows);
         } else {
