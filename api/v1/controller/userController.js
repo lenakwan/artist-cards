@@ -37,7 +37,7 @@ loginUser = async (req, res) => {
 
 searchUser = async (req, res)=>{
     let user_name = req.params.username;
-    userModel.searchUser(user_name).then((users) => {
+    userModel.searchUserId(user_name).then((users) => {
         if (users.rowCount == 1) {
             res.status(200).json(users.rows);
         } else {

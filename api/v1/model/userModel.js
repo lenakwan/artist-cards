@@ -36,6 +36,17 @@ createUser = (username, password) =>{
     });
 }
 
+/** 
+ * Searches for the specified user in the database.
+ * 
+ * @param {string} username unique username
+ */
+searchUserId = (username) => {
+    return db.pool.query({
+        text: "Select id from users where username = $1",
+        values: [username]
+    });
+}
 
 module.exports={
     searchUser, authenticateUser, createUser
