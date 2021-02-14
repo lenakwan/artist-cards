@@ -12,7 +12,7 @@ registerUser = async (req, res) => {
             userModel.createUser(body.username, body.password).catch(err => res.status(500).json({
                 message: "Error 500 Internal Server Error: " + err.message
             }))
-            res.status(200).json(users.rows);
+            res.status(200).json('User added to the Database');
         } else {
             res.status(409).json('User already exists in the Database');
         }
