@@ -1,4 +1,33 @@
-#profilePicture{
-border-radius: 50%;
+body {
+    background-image: url('https://data.whicdn.com/images/262688766/original.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
+.jumbotron {
+    opacity: 80%;
+    background-color: #fed3dc;
+}
+
+.credit {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center
+}
+
+.modal
+{
+    background-color: #d0dddd;
+    opacity:0.95 !important;
+}
+
+.divider-10 {
+    width:100%; 
+    min-height:1px; 
+    margin-top:1em; 
+    margin-bottom:1em;  
+    display:inline-block; 
+    position:relative;
+}

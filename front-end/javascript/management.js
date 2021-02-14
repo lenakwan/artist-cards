@@ -9,7 +9,8 @@ $("#back-button").click(() => {
 })
 
 fetchUserInformation = () => {
-    fetch('https://artist-cards.herokuapp.com/v1/userSettings/' + localStorage.getItem('user'), {
+    console.log('session');
+    fetch('https://artist-cards.herokuapp.com/v1/userSettings/' + localStorage.getItem('session'), {
         method: 'GET',
         headers: {
             'Accept': 'application/json',

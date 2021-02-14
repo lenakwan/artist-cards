@@ -10,6 +10,34 @@
 </head>
 
 <body>
+    <!-- Nav Bar -->
+    <nav class="navbar sticky-top navbar-expand-md navbar-light mb-5 pb-5 transparent">
+        <div class="container">
+            <a class="navbar-brand" href="#">Artist Cards</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarTransparentContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-center justify-content-end" id="navbarTransparentContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item mx-1">
+                        <a class="nav-link align-items-center d-flex" href="https://github.com/lenakwan">
+                            <i class="fa fa-facebook-square fa-fw fa-2x mr-2"></i> GITHUB</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link align-items-center d-flex" href="https://lenakwan.ca/">
+                            <i class="fa fa-twitter fa-fw fa-2x mr-2"></i>ABOUT ME</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link align-items-center d-flex"  data-toggle="modal"
+                        data-target="#loginModal" href="#">
+                            <i id="login-navbar"  class="fa fa-instagram fa-fw fa-2x mr-2" ></i> LOGIN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Content -->
     <div class="container center h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <div class="page-header">
@@ -28,19 +56,19 @@
                                 <h5>Search by name</h5>
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Username"
-                                        aria-describedby="sizing-addon2" id = "username_input">
+                                        aria-describedby="sizing-addon2" id="username_input">
                                 </div>
                                 <p></p>
                         </div>
                         <div class="col-sm">
-                            <button type="button" class="btn btn-primary btn-lg"  id = "username_submit">Search</button>
+                            <button type="button" class="btn btn-primary btn-lg" id="username_submit">Search</button>
                             </form>
                             <p></p>
                         </div>
                     </div>
                     <div class="container">
                         <div class="col-sm">
-                            <h5>Search by Category</h5>
+                            <h5>Find Name by Category</h5>
 
                         </div>
                         <div class="col-sm">
@@ -55,14 +83,51 @@
                 </div>
             </div>
 
+            <!-- Login Modal -->
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Enter your username and password.</p>
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control" type="search" placeholder="username" aria-label="username"
+                                    id="userName">
+                                <input class="form-control" type="password" placeholder="password" aria-label="password"
+                                    id="userPassword">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="register_submit" class="btn btn-secondary" data-dismiss="modal">Register</button>
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="login"
+                                id="login_submit">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="credit">
+                <div>Art by タニシャ</div>
+            </div>
 
         </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
     <script src="./javascript/index.js"></script>
 </body>
 
