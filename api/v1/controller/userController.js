@@ -51,10 +51,10 @@ searchUser = async (req, res) => {
 searchUserCategory = async (req, res) => {
     let category = req.params.category;
     userModel.searchUserByCategory(category).then((users) => {
-        if (users.rowCount == 1) {
-            res.status(200).json(users.rows);
+        if (users.rowCount == 0) {
+            res.status(404).json('No Users Exist for this category');
         } else {
-            res.status(404).json('User Not Found');
+            res.status(200).json(users.rows);
         }
     }).catch(e => res.status(500).json({
         message: 'Error 500 Internal Server Error: ' + e.message
