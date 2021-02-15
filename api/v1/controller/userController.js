@@ -43,7 +43,9 @@ searchUser = async (req, res) => {
         } else {
             res.status(404).json('User Not Found');
         }
-    })
+    }).catch(e => res.status(500).json({
+        message: 'Error 500 Internal Server Error: ' + e.message
+    }));
 }
 
 searchUserCategory = async (req, res) => {
@@ -54,7 +56,9 @@ searchUserCategory = async (req, res) => {
         } else {
             res.status(404).json('User Not Found');
         }
-    })
+    }).catch(e => res.status(500).json({
+        message: 'Error 500 Internal Server Error: ' + e.message
+    }));
 }
 module.exports = {
     registerUser,
