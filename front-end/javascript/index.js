@@ -18,49 +18,6 @@ populateDropdown = () => {
 }
 populateDropdown();
 
-registerUserDefaults = () => {
-  fetch('https://artist-cards.herokuapp.com/v1/userSettings', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      id: localStorage.getItem('session'),
-      category: "No Category",
-      user_status: "false",
-      bg_img: false,
-      bg_link: "https://data.whicdn.com/images/262688766/original.gif",
-      bg_color: "white",
-      name: "Set a Display Name",
-      header_bg_img: false,
-      header_bg_link: "https://data.whicdn.com/images/262688766/original.gif",
-      header_bg_color: "black",
-      profile_img: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
-      content_color: "white",
-      pricing: false
-    }),
-  }).
-  then(res => {
-      console.log(res.json);
-      if (res.status == 200) {
-        console.log("Login Success");
-        return res.json();
-
-      } else if (res.status == 404) {
-        throw new Error('Invalid Login.');
-      } else {
-        console.log(res.json);
-      }
-    })
-    .then(data => {
-      localStorage.setItem('session', data[0].user_id);
-      location.href = "./management.html";
-    }).
-  catch(e => {
-    alert(e);
-  });
-}
 $(document).ready(function () {
   $("#username_submit").click(() => {
     console.log($('#username_input').val());
@@ -155,9 +112,7 @@ $(document).ready(function () {
         }
       })
       .then(data => {
-        let submitted_username = document.getElementById('userName').value;
         $("#submit_result").html("User Created!");
-        registerUserDefaults();
       }).
     catch(e => {
       $("#submit_result").html(e);

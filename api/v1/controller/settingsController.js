@@ -103,13 +103,23 @@ changeUserName = async (req, res) => {
     }))
 }
 
-getCategoryUsers = async(req,res) =>{
+getCategoryUsers = async (req, res) => {
     let category = req.params.category;
     settingsModel.retrieveByCategory(category).then((data) => {
         res.status(200).json(data.rows);
     }).catch(err => res.status(500).json({
         message: "Error 500 Internal Server Error: " + err.message
     }));
+}
+
+changeUserCategory = async (req, res) => {
+    let category = req.body.category;
+    let user_id = req.params.id;
+    settingsModel.changeCategory(user_id, category).then((data) => {
+        res.status(200).json('Category changed to ' + req.body.category)
+    }).catch(err => res.status(500).json({
+        message: "Error 500 internal Server error: " + err.message
+    }))
 }
 
 module.exports = {
@@ -123,5 +133,6 @@ module.exports = {
     changeCommissionStatus,
     changeUserName,
     getUniqueCategories,
-    getCategoryUsers
+    getCategoryUsers,
+    changeUserCategory
 }

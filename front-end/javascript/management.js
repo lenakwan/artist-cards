@@ -1,4 +1,4 @@
-const user = localStorage.getItem("user");
+const user = localStorage.getItem("session");
 if (!user) {
     $("#user-info").html("Error 404 - User Not Found<br/>");
     $("#user-info").append('<div class="text-center"><br/><button type="button" id = "back-button" class="btn btn-dark">Back</button></div>');
@@ -9,7 +9,6 @@ $("#back-button").click(() => {
 })
 
 fetchUserInformation = () => {
-    console.log('session');
     fetch('https://artist-cards.herokuapp.com/v1/userSettings/' + localStorage.getItem('session'), {
         method: 'GET',
         headers: {
@@ -56,12 +55,13 @@ fetchUserInformation = () => {
             }
         }).
     catch(e => {
-        console.log(e);
+        registerUserDefaults();
+        location.reload();
     });
 }
 
 fetchUserLinks = () => {
-    fetch('https://artist-cards.herokuapp.com/v1/links/' + localStorage.getItem('user'), {
+    fetch('https://artist-cards.herokuapp.com/v1/links/' + localStorage.getItem('session'), {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -86,7 +86,7 @@ fetchUserLinks = () => {
                 $("#user-links-toggle").css('display', 'block');
                 $("#user-links").empty();
                 for (i = 0; i < data.length; i++) {
-                    current_url = "http://" + data[i].link_url ;
+                    current_url = "http://" + data[i].link_url;
                     let link_button = document.createElement("a");
                     let spacing = document.createElement("BR");
                     link_button.className = "user-buttons btn btn-info btn-block";
@@ -103,7 +103,7 @@ fetchUserLinks = () => {
 }
 
 fetchUserPricing = () => {
-    fetch('https://artist-cards.herokuapp.com/v1/pricing/' + localStorage.getItem('user'), {
+    fetch('https://artist-cards.herokuapp.com/v1/pricing/' + localStorage.getItem('session'), {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -123,7 +123,7 @@ fetchUserPricing = () => {
             }
         })
         .then(data => {
-            if (data[0]){
+            if (data[0]) {
                 $("#user-prices").empty();
             }
             for (i = 0; i < data.length; i++) {
@@ -152,6 +152,117 @@ fetchUserPricing = () => {
         console.log(e);
     });
 }
+
+
+registerUserDefaults = () => {
+    fetch('https://artist-cards.herokuapp.com/v1/userSettings', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: localStorage.getItem('session'),
+            category: "No Category",
+            user_status: "false",
+            bg_img: false,
+            bg_link: "https://data.whicdn.com/images/262688766/original.gif",
+            bg_color: "white",
+            name: "Set a Display Name",
+            header_bg_img: false,
+            header_bg_link: "https://data.whicdn.com/images/262688766/original.gif",
+            header_bg_color: "black",
+            profile_img: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
+            content_color: "white",
+            pricing: false
+        }),
+    }).
+    then(res => {
+            console.log(res.json);
+            if (res.status == 200) {
+                console.log("Login Success");
+                return res.json();
+
+            } else if (res.status == 404) {
+                throw new Error('Invalid Login.');
+            } else {
+                console.log(res.json);
+            }
+        })
+        .then(data => {
+            localStorage.setItem('session', data[0].user_id);
+            location.href = "./management.html";
+        }).
+    catch(e => {
+        alert(e);
+        
+    });
+}
+
+$("#name_submit").click(() => {
+    fetch('https://artist-cards.herokuapp.com/v1/userName/' + localStorage.getItem('session'), {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: document.getElementById("input_display_name").value
+      }),
+    }).
+    then(res => {
+        console.log(res.json);
+        if (res.status == 200) {
+          console.log("Register Success");
+          return res.json();
+
+        } else if (res.status == 409) {
+          throw new Error('User already exists.');
+        } else {
+          console.log(res.json);
+        }
+      })
+      .then(data => {
+        console.log('name changed');
+        location.reload();
+      }).
+    catch(e => {
+      $("#submit_result").html(e);
+    });
+  });
+
+  
+$("#category_submit").click(() => {
+    fetch('https://artist-cards.herokuapp.com/v1/userName/' + localStorage.getItem('session'), {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: document.getElementById("input_display_name").value
+      }),
+    }).
+    then(res => {
+        console.log(res.json);
+        if (res.status == 200) {
+          console.log("Register Success");
+          return res.json();
+
+        } else if (res.status == 409) {
+          throw new Error('User already exists.');
+        } else {
+          console.log(res.json);
+        }
+      })
+      .then(data => {
+        console.log('name changed');
+        location.reload();
+      }).
+    catch(e => {
+      $("#submit_result").html(e);
+    });
+  });
 fetchUserInformation();
 
 fetchUserLinks();

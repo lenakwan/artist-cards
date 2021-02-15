@@ -20,3 +20,11 @@
     width: 60%;
 }
 
+.divider-10 {
+    width:100%; 
+    min-height:1px; 
+    margin-top:1em; 
+    margin-bottom:1em;  
+    display:inline-block; 
+    position:relative;
+}

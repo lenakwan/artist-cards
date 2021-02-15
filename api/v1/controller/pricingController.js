@@ -55,5 +55,6 @@ module.exports = {
     deleteSinglePrice,
     deleteUserPrices,
     getUserPrices,
-    editSinglePrice
+    editSinglePrice,
+    
 }

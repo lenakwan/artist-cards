@@ -68,5 +68,7 @@ api.delete('/price/:id', pricingController.deleteSinglePrice);
 
 api.put('/price/:id', pricingController.editSinglePrice);
 
+api.put('/categories/:id', settingsController.changeUserCategory);
+
 
 module.exports = api;

@@ -12,6 +12,30 @@
 </head>
 
 <body>
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-md navbar-light fixed-top transparent">
+        <div class="container">
+            <a class="navbar-brand" href="./index.html">Artist Cards</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarTransparentContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-center justify-content-end" id="navbarTransparentContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item mx-1">
+                        <a class="nav-link align-items-center d-flex" data-toggle="modal" data-target="#linkModal"
+                            href="#">
+                            <i id="link-navbar" class="fa fa-fw fa-2x mr-2"></i>EDIT LINKS & PRICES</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link align-items-center d-flex" data-toggle="modal" data-target="#editModal"
+                            href="#">
+                            <i id="edit-navbar" class="fa fa-fw fa-2x mr-2"></i>EDIT DISPLAY</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container fluid  center h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <div class="jumbotron" id="user-info">
@@ -53,7 +77,7 @@
                         <div class="card text-center">
                             <div class="card-body">
                                 <p class="h3">Prices</p>
-                                <div id="user-prices" >
+                                <div id="user-prices">
                                     <p>Prices will be listed at a later date!</p>
                                 </div>
                             </div>
@@ -64,6 +88,195 @@
         </div>
     </div>
 
+    <!-- edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Your Card</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ">
+
+                    <div class="container">
+                        <form class="form-inline my-2 my-lg-0">
+                            <p class="h3">Change Display Name</p>
+                            <div class="row">
+
+                                <div class="col">
+                                    <input class="form-control" type="search" placeholder="Name" aria-label="input_name"
+                                        id="input_display_name">
+                                </div>
+                                <div class="col">
+                                    <button type="button" id="name_submit" class="btn btn-secondary"
+                                        data-dismiss="modal">Edit</button>
+                                </div>
+                            </div>
+                            <div class="divider-10"></div>
+                            <p class="h3">Change Art Category</p>
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control" type="search" placeholder="Name" aria-label="input_name"
+                                        id="input_category">
+                                </div>
+                                <div class="col">
+                                    <button type="button" id="category_submit" class="btn btn-secondary"
+                                        data-dismiss="modal">Edit</button>
+                                </div>
+                            </div>
+                            <div class="divider-10"></div>
+                            <p class="h3">Change Display Picture</p>
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control" type="search" placeholder="www.domain.com/file.img" aria-label="input_img"
+                                        id="input_img">
+                                </div>
+                                <div class="col">
+                                    <button type="button" id="input_image_submit" class="btn btn-secondary"
+                                        data-dismiss="modal">Edit</button>
+                                </div>
+                            </div>
+                            <div class="divider-10"></div>
+                            <p class="h3">Change Header</p>
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control" type="search" placeholder="www.example.com"
+                                        aria-label="input_header_link" id="input_header_link">
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="search" placeholder="black or #000000"
+                                        aria-label="input_header_link" id="input_header_color">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9">
+                                    <label for="input_header_bg">Use image for header background?</label></div>
+                                <div class="col"><select class="form-control form-control-sm" id="input_header_bg">
+                                        <option>true</option>
+                                        <option>false</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <button type="button" id="register_submit" class="btn btn-secondary"
+                                        data-dismiss="modal">Edit</button>
+                                </div>
+                                <div class="divider-10"></div>
+                            </div>
+                            <p></p>
+                            <p class="h3">Change Background</p>
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control" type="search" placeholder="www.example.com"
+                                        aria-label="input_bg_link" id="input_bg_link">
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="search" placeholder="Name"
+                                        aria-label="input_bg_color" id="input_bg_color">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9">
+                                    <label for="input_bg">Use image for website background?</label></div>
+                                <div class="col"><select class="form-control form-control-sm" id="input_bg">
+                                        <option>true</option>
+                                        <option>false</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <button type="button" id="bg_change_submit" class="btn btn-secondary"
+                                        data-dismiss="modal">Edit</button>
+                                </div>
+                                <div class="divider-10"></div>
+                            </div>
+                            <p></p>
+                            <p class="h3">Change Store Status</p>
+                            <div class="row">
+                                <div class="col-8">
+                                    <label for="input_private">Open Commissions?</label></div>
+                                <div class="col"><select class="form-control form-control-sm" id="input_private">
+                                        <option>true</option>
+                                        <option>false</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <button type="button" id="register_submit" class="btn btn-secondary"
+                                        data-dismiss="modal">Edit</button>
+                                </div>
+                                <div class="divider-10"></div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- link/price Modal -->
+    <div class="modal fade" id="linkModal" tabindex="-1" role="dialog" aria-labelledby="linkModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="linkModalLabel">Edit Your Pricing and Links</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="container">
+                        <form class="form-inline my-2 my-lg-0">
+                            <p class="h3">Edit Links</p>
+                            <div class="divider-10"></div>
+                            Add New Link
+                            <div class="row">
+                                
+                                <div class="col">
+                                    <input class="form-control" type="search" placeholder="Link Name" aria-label="input_link_name"
+                                        id="input_link_name">
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="search" placeholder="www.example.com" aria-label="add_link"
+                                        id="add_link_name">
+                                </div>
+                                <div class="divider-10"></div>
+                                <div class="col">
+                                    <button type="button" id="add_link_submit" class="btn btn-secondary"
+                                        data-dismiss="modal">Edit</button>
+                                </div>
+                            </div>
+                            <div class="divider-10"></div>
+                            <p class="h3">Edit Prices</p>
+                            <div class="divider-10"></div>
+                            Add New Price
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control" type="search" placeholder="Item Name" aria-label="input_item_name"
+                                        id="input_item_name">
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="search" placeholder="Item Price" aria-label="input_img"
+                                        id="input_img">
+                                </div>
+                                <div class="divider-10"></div>
+                                <div class="col">
+                                    <button type="button" id="input_image_submit" class="btn btn-secondary"
+                                        data-dismiss="modal">Edit</button>
+                                </div>
+                            </div>
+                            <div class="divider-10"></div>
+                          
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -74,7 +287,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="./javascript/management.js"></script>
-    
+
 </body>
 
 </html>
