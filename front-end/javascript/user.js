@@ -37,7 +37,7 @@ fetchUserInformation = () => {
              //Style Header
              if (data[0].header_bg_img == true) {
                 document.getElementById("user-card").style.backgroundImage = 'url("' + data[0].header_bg_link + '")';
-                document.getElementById("user-card").backgroundSize = 'cover';
+                document.getElementById("user-card").style.backgroundSize = 'cover';
             } else {
                 document.getElementById("user-card").backgroundColor = data[0].header_bg_color;
             }

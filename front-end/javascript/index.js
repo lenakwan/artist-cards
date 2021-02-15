@@ -22,10 +22,10 @@ populateUserNames = () =>{
   console.log(document.getElementById('category-dropdown').value);
   let display = $('#user-names');
   display.empty();
-  const url = 'https://artist-cards.herokuapp.com/v1/categories/'+ document.getElementById('category-dropdown').value;
+  const url = 'https://artist-cards.herokuapp.com/v1/userCategory/'+ document.getElementById('category-dropdown').value;
   $.getJSON(url, function (data) {
     $.each(data, function (key, entry) {
-      const url = 'https://artist-cards.herokuapp.com/v1/categories/'+ entry.id;
+      display.append(' <h4><small>'+ entry.username +'</small></h4>');
     })
   });
 }
