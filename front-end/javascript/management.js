@@ -35,14 +35,14 @@ fetchUserInformation = () => {
                 $("#user-status").html("Open");
             }
             //Style Header
-            if (data[0].bg_img == true) {
+            if (data[0].header_bg_img == true) {
                 document.getElementById("user-card").style.backgroundImage = 'url("' + data[0].header_bg_link + '")';
-                document.getElementById("user-card").backgroundSize = 'cover';
+                document.getElementById("user-card").style.backgroundSize = 'cover';
             } else {
                 document.getElementById("user-card").backgroundColor = data[0].header_bg_color;
             }
             //Style Background
-            if (data[0].header_bg_img == true) {
+            if (data[0].bg_img == true) {
                 document.body.style.backgroundImage = 'url("' + data[0].bg_link + '")';
                 document.body.style.backgroundSize = 'cover';
             } else {
@@ -152,6 +152,35 @@ fetchUserPricing = () => {
         console.log(e);
     });
 }
+/**
+ * Populates the drop down menu with all categories found from the api.
+ */
+populateDropdown = () => {
+    let price_dropdown = $('#prices-dropdown');
+    price_dropdown.empty();
+    price_dropdown.append('<option selected="true" disabled>Choose Item to Delete</option>');
+    price_dropdown.prop('selectedIndex', 0);
+
+    const url = 'https://artist-cards.herokuapp.com/v1/pricing/' + localStorage.getItem('session');
+    $.getJSON(url, function (data) {
+        $.each(data, function (key, entry) {
+            price_dropdown.append($('<option></option>').attr('value', entry.item_name).text(entry.item_name));
+        })
+    });
+
+    let link_dropdown = $('#links-dropdown');
+    link_dropdown.empty();
+    link_dropdown.append('<option selected="true" disabled>Choose Item to Delete</option>');
+    link_dropdown.prop('selectedIndex', 0);
+
+    const link_url = 'https://artist-cards.herokuapp.com/v1/links/' + localStorage.getItem('session');
+    $.getJSON(link_url, function (data) {
+        $.each(data, function (key, link_entry) {
+            link_dropdown.append($('<option></option>').attr('value', link_entry.link_name).text(link_entry.link_name));
+        })
+    });
+}
+populateDropdown();
 
 
 registerUserDefaults = () => {
@@ -195,74 +224,375 @@ registerUserDefaults = () => {
         }).
     catch(e => {
         alert(e);
-        
+
     });
 }
 
 $("#name_submit").click(() => {
     fetch('https://artist-cards.herokuapp.com/v1/userName/' + localStorage.getItem('session'), {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: document.getElementById("input_display_name").value
-      }),
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: document.getElementById("input_display_name").value
+        }),
     }).
     then(res => {
-        console.log(res.json);
-        if (res.status == 200) {
-          console.log("Register Success");
-          return res.json();
+            console.log(res.json);
+            if (res.status == 200) {
+                console.log("Name Change Success");
+                return res.json();
 
-        } else if (res.status == 409) {
-          throw new Error('User already exists.');
-        } else {
-          console.log(res.json);
-        }
-      })
-      .then(data => {
-        console.log('name changed');
-        location.reload();
-      }).
+            } else if (res.status == 404) {
+                throw new Error('Cannot Access User');
+            } else {
+                console.log(res.json);
+            }
+        })
+        .then(data => {
+            console.log('name changed');
+            location.reload();
+        }).
     catch(e => {
-      $("#submit_result").html(e);
+        console.log(e);
     });
-  });
+});
 
-  
+
 $("#category_submit").click(() => {
-    fetch('https://artist-cards.herokuapp.com/v1/userName/' + localStorage.getItem('session'), {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: document.getElementById("input_display_name").value
-      }),
+    fetch('https://artist-cards.herokuapp.com/v1/categories/' + localStorage.getItem('session'), {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            category: document.getElementById("input_category").value
+        }),
     }).
     then(res => {
-        console.log(res.json);
-        if (res.status == 200) {
-          console.log("Register Success");
-          return res.json();
+            console.log(res.json);
+            if (res.status == 200) {
+                console.log("Category Change Success");
+                return res.json();
 
-        } else if (res.status == 409) {
-          throw new Error('User already exists.');
-        } else {
-          console.log(res.json);
-        }
-      })
-      .then(data => {
-        console.log('name changed');
-        location.reload();
-      }).
+            } else if (res.status == 404) {
+                throw new Error('Cannot Access User');
+            } else {
+                console.log(res.json);
+            }
+        })
+        .then(data => {
+            console.log('category changed');
+            location.reload();
+        }).
     catch(e => {
-      $("#submit_result").html(e);
+        console.log(e);
     });
-  });
+});
+
+
+$("#input_image_submit").click(() => {
+    fetch('https://artist-cards.herokuapp.com/v1/userProfile/' + localStorage.getItem('session'), {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            profile_img: document.getElementById("input_img").value
+        }),
+    }).
+    then(res => {
+            console.log(res.json);
+            if (res.status == 200) {
+                console.log("Image Change Success");
+                return res.json();
+
+            } else if (res.status == 404) {
+                throw new Error('Cannot Access User');
+            } else {
+                console.log(res.json);
+            }
+        })
+        .then(data => {
+            console.log('category changed');
+            location.reload();
+        }).
+    catch(e => {
+        console.log(e);
+    });
+});
+
+
+$("#status_submit").click(() => {
+    fetch('https://artist-cards.herokuapp.com/v1/userStatus/' + localStorage.getItem('session'), {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            status: document.getElementById("input_status").value
+        }),
+    }).
+    then(res => {
+            console.log(res.json);
+            if (res.status == 200) {
+                console.log("Status Change Success");
+                return res.json();
+
+            } else if (res.status == 404) {
+                throw new Error('Cannot Access User');
+            } else {
+                console.log(res.json);
+            }
+        })
+        .then(data => {
+            console.log('status changed');
+            location.reload();
+        }).
+    catch(e => {
+        alert.log(e);
+    });
+});
+
+$("#header_submit").click(() => {
+    fetch('https://artist-cards.herokuapp.com/v1/userHeader/' + localStorage.getItem('session'), {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            header_bg_img: document.getElementById("input_header_bg").value,
+            header_bg_link: document.getElementById("input_header_link").value,
+            header_bg_color: document.getElementById("input_header_color").value
+        }),
+    }).
+    then(res => {
+            console.log(res.json);
+            if (res.status == 200) {
+                // alert("Status Change Success");
+                return res.json();
+
+            } else if (res.status == 404) {
+                console.log('Cannot Access User');
+            } else {
+                console.log(res.json);
+            }
+        })
+        .then(data => {
+            console.log('status changed');
+            location.reload();
+        }).
+    catch(e => {
+        console.log(e);
+    });
+});
+
+
+$("#bg_change_submit").click(() => {
+    fetch('https://artist-cards.herokuapp.com/v1/userBackground/' + localStorage.getItem('session'), {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            bg_img: document.getElementById("input_bg").value,
+            bg_link: document.getElementById("input_bg_link").value,
+            bg_color: document.getElementById("input_bg_color").value
+        }),
+    }).
+    then(res => {
+            console.log(res.json);
+            if (res.status == 200) {
+                // alert("Status Change Success");
+                return res.json();
+
+            } else if (res.status == 404) {
+                console.log('Cannot Access User');
+            } else {
+                console.log(res.json);
+            }
+        })
+        .then(data => {
+            console.log('status changed');
+            location.reload();
+        }).
+    catch(e => {
+        console.log(e);
+    });
+});
+
+$("#add_link_submit").click(() => {
+    fetch('https://artist-cards.herokuapp.com/v1/links/', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: parseInt(localStorage.getItem('session')),
+            link_url: document.getElementById("add_link_url").value,
+            link_name: document.getElementById("add_link_name").value
+        }),
+    }).
+    then(res => {
+            console.log(res.json);
+            if (res.status == 200) {
+                // alert("Status Change Success");
+                return res.json();
+
+            } else if (res.status == 404) {
+                console.log('Cannot Access User');
+            } else {
+                console.log(res.json);
+            }
+        })
+        .then(data => {
+            console.log('status changed');
+            location.reload();
+        }).
+    catch(e => {
+        console.log(e);
+    });
+});
+
+$("#input_price_submit").click(() => {
+    fetch('https://artist-cards.herokuapp.com/v1/pricing', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: parseInt(localStorage.getItem('session')),
+            item_name: document.getElementById("input_item_name").value,
+            item_price: document.getElementById("input_price").value
+        }),
+    }).
+    then(res => {
+            console.log(res.json);
+            if (res.status == 200) {
+                // alert("Status Change Success");
+                return res.json();
+
+            } else if (res.status == 404) {
+                console.log('Cannot Access User');
+            } else {
+                console.log(res.json);
+            }
+        })
+        .then(data => {
+            console.log('status changed');
+            location.reload();
+        }).
+    catch(e => {
+        console.log(e);
+    });
+});
+
+
+$("#store_display_submit").click(() => {
+    fetch('https://artist-cards.herokuapp.com/v1/userPricing/' + localStorage.getItem('session'), {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            pricing: document.getElementById("input_store_display").value
+        }),
+    }).
+    then(res => {
+            console.log(res.json);
+            if (res.status == 200) {
+                // alert("Status Change Success");
+                return res.json();
+
+            } else if (res.status == 404) {
+                console.log('Cannot Access User');
+            } else {
+                console.log(res.json);
+            }
+        })
+        .then(data => {
+            console.log('status changed');
+            location.reload();
+        }).
+    catch(e => {
+        console.log(e);
+    });
+});
+
+$("#delete_price_submit").click(() => {
+    fetch('https://artist-cards.herokuapp.com/v1/price/' + localStorage.getItem('session'), {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            item_name: document.getElementById("prices-dropdown").value
+        }),
+    }).
+    then(res => {
+            console.log(res.json);
+            if (res.status == 200) {
+                // alert("Status Change Success");
+                return res.json();
+
+            } else if (res.status == 404) {
+                console.log('Cannot Access User');
+            } else {
+                console.log(res.json);
+            }
+        })
+        .then(data => {
+            console.log('status changed');
+            location.reload();
+        }).
+    catch(e => {
+        console.log(e);
+    });
+});
+
+
+$("#delete_link_submit").click(() => {
+    fetch('https://artist-cards.herokuapp.com/v1/links/' + localStorage.getItem('session'), {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            link_name: document.getElementById("links-dropdown").value
+        }),
+    }).
+    then(res => {
+            console.log(res.json);
+            if (res.status == 200) {
+                // alert("Status Change Success");
+                return res.json();
+
+            } else if (res.status == 404) {
+                console.log('Cannot Access User');
+            } else {
+                console.log(res.json);
+            }
+        })
+        .then(data => {
+            console.log('status changed');
+            location.reload();
+        }).
+    catch(e => {
+        console.log(e);
+    });
+});
 fetchUserInformation();
 
 fetchUserLinks();

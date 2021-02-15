@@ -34,15 +34,15 @@ fetchUserInformation = () => {
             if (data[0].status == true) {
                 $("#user-status").html("Open");
             }
-            //Style Header
-            if (data[0].bg_img == true) {
+             //Style Header
+             if (data[0].header_bg_img == true) {
                 document.getElementById("user-card").style.backgroundImage = 'url("' + data[0].header_bg_link + '")';
                 document.getElementById("user-card").backgroundSize = 'cover';
             } else {
                 document.getElementById("user-card").backgroundColor = data[0].header_bg_color;
             }
             //Style Background
-            if (data[0].header_bg_img == true) {
+            if (data[0].bg_img == true) {
                 document.body.style.backgroundImage = 'url("' + data[0].bg_link + '")';
                 document.body.style.backgroundSize = 'cover';
             } else {

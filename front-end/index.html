@@ -29,9 +29,9 @@
                             <i class="fa  fa-fw fa-2x mr-2"></i>ABOUT ME</a>
                     </li>
                     <li class="nav-item mx-1">
-                        <a class="nav-link align-items-center d-flex"  data-toggle="modal"
-                        data-target="#loginModal" href="#">
-                            <i id="login-navbar"  class="fa fa-fw fa-2x mr-2" ></i> LOGIN</a>
+                        <a class="nav-link align-items-center d-flex" data-toggle="modal" data-target="#loginModal"
+                            href="#">
+                            <i id="login-navbar" class="fa fa-fw fa-2x mr-2"></i> LOGIN</a>
                     </li>
                 </ul>
             </div>
@@ -77,11 +77,13 @@
                             <p></p>
                         </div>
                         <div class="col-sm">
-                            <button type="button" class="btn btn-primary btn-lg">Search</button>
+                            <button type="button" class="btn btn-primary btn-lg" id="category-submit">Search</button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- next step -> open modal on click in js -->
 
             <!-- Login Modal -->
             <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
@@ -104,9 +106,30 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="register_submit" class="btn btn-secondary" data-dismiss="modal">Register</button>
+                            <button type="button" id="register_submit" class="btn btn-secondary"
+                                data-dismiss="modal">Register</button>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="login"
                                 id="login_submit">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Modal -->
+            <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="usernModalLabel">Usernames</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id ="user-names">
+
+                            </div>
                         </div>
                     </div>
                 </div>

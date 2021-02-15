@@ -18,6 +18,18 @@ populateDropdown = () => {
 }
 populateDropdown();
 
+populateUserNames = () =>{
+  console.log(document.getElementById('category-dropdown').value);
+  let display = $('#user-names');
+  display.empty();
+  const url = 'https://artist-cards.herokuapp.com/v1/categories/'+ document.getElementById('category-dropdown').value;
+  $.getJSON(url, function (data) {
+    $.each(data, function (key, entry) {
+      const url = 'https://artist-cards.herokuapp.com/v1/categories/'+ entry.id;
+    })
+  });
+}
+
 $(document).ready(function () {
   $("#username_submit").click(() => {
     console.log($('#username_input').val());
@@ -85,6 +97,11 @@ $(document).ready(function () {
 
   $("#back_submit").click(() => {
     window.history.back();
+  })
+
+  $("#category-submit").click(() => {
+    populateUserNames();
+    $("#userModal").modal();
   })
 
   $("#register_user_submit").click(() => {

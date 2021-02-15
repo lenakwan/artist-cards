@@ -35,7 +35,7 @@ loginUser = async (req, res) => {
     }));
 }
 
-searchUser = async (req, res)=>{
+searchUser = async (req, res) => {
     let user_name = req.params.username;
     userModel.searchUserId(user_name).then((users) => {
         if (users.rowCount == 1) {
@@ -46,6 +46,19 @@ searchUser = async (req, res)=>{
     })
 }
 
+searchUserCategory = async (req, res) => {
+    let category = req.params.category;
+    userModel.searchUserByCategory(category).then((users) => {
+        if (users.rowCount == 1) {
+            res.status(200).json(users.rows);
+        } else {
+            res.status(404).json('User Not Found');
+        }
+    })
+}
 module.exports = {
-    registerUser, loginUser, searchUser
+    registerUser,
+    loginUser,
+    searchUser,
+    searchUserByCategory
 }

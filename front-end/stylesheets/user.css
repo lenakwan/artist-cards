@@ -1,7 +1,7 @@
 #user-profile {
     border-radius: 50%;
-    width: 300px;
-    height: 300px;
+    width: 10em;
+    height: 10em;
     overflow: hidden;
     margin: 0;
     object-fit: cover;
@@ -27,4 +27,8 @@
     margin-bottom:1em;  
     display:inline-block; 
     position:relative;
+}
+
+.jumbotron{
+    padding: 2em;
 }

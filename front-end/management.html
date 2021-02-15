@@ -131,8 +131,8 @@
                             <p class="h3">Change Display Picture</p>
                             <div class="row">
                                 <div class="col">
-                                    <input class="form-control" type="search" placeholder="www.domain.com/file.img" aria-label="input_img"
-                                        id="input_img">
+                                    <input class="form-control" type="search" placeholder="www.domain.com/file.img"
+                                        aria-label="input_img" id="input_img">
                                 </div>
                                 <div class="col">
                                     <button type="button" id="input_image_submit" class="btn btn-secondary"
@@ -160,7 +160,7 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <button type="button" id="register_submit" class="btn btn-secondary"
+                                    <button type="button" id="header_submit" class="btn btn-secondary"
                                         data-dismiss="modal">Edit</button>
                                 </div>
                                 <div class="divider-10"></div>
@@ -196,13 +196,13 @@
                             <div class="row">
                                 <div class="col-8">
                                     <label for="input_private">Open Commissions?</label></div>
-                                <div class="col"><select class="form-control form-control-sm" id="input_private">
+                                <div class="col"><select class="form-control form-control-sm" id="input_status">
                                         <option>true</option>
                                         <option>false</option>
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <button type="button" id="register_submit" class="btn btn-secondary"
+                                    <button type="button" id="status_submit" class="btn btn-secondary"
                                         data-dismiss="modal">Edit</button>
                                 </div>
                                 <div class="divider-10"></div>
@@ -234,14 +234,13 @@
                             <div class="divider-10"></div>
                             Add New Link
                             <div class="row">
-                                
                                 <div class="col">
-                                    <input class="form-control" type="search" placeholder="Link Name" aria-label="input_link_name"
-                                        id="input_link_name">
+                                    <input class="form-control" type="search" placeholder="Link Name"
+                                        aria-label="input_link_name" id="add_link_name">
                                 </div>
                                 <div class="col">
-                                    <input class="form-control" type="search" placeholder="www.example.com" aria-label="add_link"
-                                        id="add_link_name">
+                                    <input class="form-control" type="search" placeholder="www.example.com"
+                                        aria-label="add_link" id="add_link_url">
                                 </div>
                                 <div class="divider-10"></div>
                                 <div class="col">
@@ -250,26 +249,66 @@
                                 </div>
                             </div>
                             <div class="divider-10"></div>
+                            <div class="row">
+                                Delete a Link
+                                <div class="divider-10"></div>
+                                <div class="col">
+                                    <select id="links-dropdown" name="links">
+                                    </select>
+                                    <p></p>
+                                </div>
+                                <div class="col">
+                                    <button type="button" id="delete_link_submit" class="btn btn-secondary"
+                                        data-dismiss="modal">Delete</button>
+                                </div>
+                            </div>
+                            <div class="divider-10"></div>
                             <p class="h3">Edit Prices</p>
                             <div class="divider-10"></div>
                             Add New Price
                             <div class="row">
                                 <div class="col">
-                                    <input class="form-control" type="search" placeholder="Item Name" aria-label="input_item_name"
-                                        id="input_item_name">
+                                    <input class="form-control" type="search" placeholder="Item Name"
+                                        aria-label="input_item_name" id="input_item_name">
                                 </div>
                                 <div class="col">
-                                    <input class="form-control" type="search" placeholder="Item Price" aria-label="input_img"
-                                        id="input_img">
+                                    <input class="form-control" type="search" placeholder="Item Price"
+                                        aria-label="input_price" id="input_price">
                                 </div>
                                 <div class="divider-10"></div>
                                 <div class="col">
-                                    <button type="button" id="input_image_submit" class="btn btn-secondary"
+                                    <button type="button" id="input_price_submit" class="btn btn-secondary"
                                         data-dismiss="modal">Edit</button>
                                 </div>
                             </div>
                             <div class="divider-10"></div>
-                          
+                            <div class="row">
+                                <div class="col-8">
+                                    <label for="input_private">Display Prices</label></div>
+                                <div class="col"><select class="form-control form-control-sm" id="input_store_display">
+                                        <option>true</option>
+                                        <option>false</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <button type="button" id="store_display_submit" class="btn btn-secondary"
+                                        data-dismiss="modal">Edit</button>
+                                </div>
+                            </div>
+                            <div class="divider-10"></div>
+                            <div class="row">
+                                Delete a Price
+                                <div class="divider-10"></div>
+                                <div class="col">
+                                    <select id="prices-dropdown" name="categories">
+                                    </select>
+                                    <p></p>
+                                </div>
+                                <div class="col">
+                                    <button type="button" id="delete_price_submit" class="btn btn-secondary"
+                                        data-dismiss="modal">Delete</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
