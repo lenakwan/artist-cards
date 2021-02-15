@@ -70,7 +70,7 @@ api.put('/price/:id', pricingController.editSinglePrice);
 
 api.put('/categories/:id', settingsController.changeUserCategory);
 
-api.get('/userCategory/:category', userController.searchUserByCategory);
+api.get('/userCategory/:category', userController.searchUserCategory);
 
 
 module.exports = api;

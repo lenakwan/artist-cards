@@ -64,5 +64,5 @@ module.exports = {
     registerUser,
     loginUser,
     searchUser,
-    searchUserByCategory
+    searchUserCategory
 }
