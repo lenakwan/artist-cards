@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Hello! This API was developed by Lena Kwan as a solution to artists having to host their stores on their own websites. Please feel free to use it!
+Hello! This API was developed by Lena Kwan as a solution to help artists consolidate all their information/pricing onto one website. Please feel free to use it!
 
 The Artist Card API was created to store data about users, their user settings, their pricing for store items and links to other websites such as social media. APIV1 is a REST API that allows API access via HTTP protocol at a predefined set of URLs. These URLs allow you, the developer, to access various resources which can have methods performed on them (GET/POST/PUT/DELETE). 
 
