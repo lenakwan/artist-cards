@@ -266,7 +266,7 @@ Attributes
 
             Deletes the link for the user. 
 
-### Locations
+### Pricing
 
 This is an object representing prices stored by your users.
 
